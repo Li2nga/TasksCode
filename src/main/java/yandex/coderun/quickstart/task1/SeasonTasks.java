@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+/**
+ * <a href="https://coderun.yandex.ru/selections/quickstart/problems/season-tasks">task link</a><br>
+ */
+
 public class SeasonTasks {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -19,6 +23,7 @@ public class SeasonTasks {
         long b = Long.parseLong(sArray[1]);
 
         long sum = a + b;
+
         writer.write(String.valueOf(sum));
 
         reader.close();
