@@ -24,7 +24,6 @@ public class QuadraticEquation {
 
         reader.close();
         writer.close();
-
     }
 
     static String solveQuadraticEquation(int a, int b, int c) {
