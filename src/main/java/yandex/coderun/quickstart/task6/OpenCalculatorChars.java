@@ -25,6 +25,7 @@ public class OpenCalculatorChars {
         String n = reader.readLine();
 
         writer.write(String.valueOf(countNewFigures(x, y, z, n)));
+
         reader.close();
         writer.close();
     }
