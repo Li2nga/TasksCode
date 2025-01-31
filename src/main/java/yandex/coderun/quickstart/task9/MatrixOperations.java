@@ -26,21 +26,29 @@ public class MatrixOperations {
 
         printMatrix(matrix);
         System.out.println("\n-------------------");
+        printMatrixLite(transposedMatrix(matrix));
+        System.out.println("\n-------------------");
         printMatrix(m2);
         System.out.println("\n-------------------");
+        printMatrixLite(transposedMatrix(m2));
+        System.out.println("\n-------------------");
         printMatrix(m3);
-        System.out.println("\n-------------------");
-        printMatrix(m4);
-        System.out.println("\n-------------------");
-        printMatrix(m5);
         System.out.println("\n-------------------");
         printMatrixLite(m3);
         System.out.println("\n-------------------");
         printMatrixLite(transposedMatrix(m3));
+        System.out.println("\n-------------------");
+        printMatrix(m4);
+        System.out.println("\n-------------------");
+        printMatrixLite(transposedMatrix(m4));
+        System.out.println("\n-------------------");
+        printMatrix(m5);
+        System.out.println("\n-------------------");
+        printMatrixLite(transposedMatrix(m5));
     }
 
     static int[][] transposedMatrix(int[][] matrix) {
-        int[][] transposedMatrix = new int[matrix.length][matrix[0].length];
+        int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 transposedMatrix[j][i] = matrix[i][j];
@@ -48,4 +56,4 @@ public class MatrixOperations {
         }
         return transposedMatrix;
     }
-  }
+}
