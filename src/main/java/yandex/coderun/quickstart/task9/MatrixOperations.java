@@ -7,6 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
+/**
+ * <a href="https://coderun.yandex.ru/selections/quickstart/problems/matrix-operations">task link</a><br>
+ * test - OK
+ */
 public class MatrixOperations {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -28,21 +32,21 @@ public class MatrixOperations {
             B[i] = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         }
 
-        printMatrixLite(A);
-        printMatrixLite(B);
-        printMatrixLite(multiplicationMatrix(A, B));
+        writer.write(printMatrixLite(transposedMatrix(multiplicationMatrix(A, B))));
 
         reader.close();
         writer.close();
     }
 
-    public static void printMatrixLite(int[][] A) {
-        for (int i = 0; i < A.length; i++) {
-            for (int j = 0; j < A[i].length; j++) {
-                System.out.print(A[i][j] + " ");
+    public static String printMatrixLite(int[][] matrix) {
+        StringBuilder sb = new StringBuilder();
+        for (int[] ints : matrix) {
+            for (int anInt : ints) {
+                sb.append(anInt).append(" ");
             }
-            System.out.println();
+            sb.append("\n");
         }
+        return sb.toString();
     }
 
     public static int[][] multiplicationMatrix(int[][] A, int[][] B) {
@@ -58,5 +62,15 @@ public class MatrixOperations {
             }
         }
         return C;
+    }
+
+    static int[][] transposedMatrix(int[][] C) {
+        int[][] transposedMatrix = new int[C[0].length][C.length];
+        for (int i = 0; i < C.length; i++) {
+            for (int j = 0; j < C[i].length; j++) {
+                transposedMatrix[j][i] = C[i][j];
+            }
+        }
+        return transposedMatrix;
     }
 }
