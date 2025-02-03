@@ -1,59 +1,62 @@
 package yandex.coderun.quickstart.task9;
 
-import static yandex.coderun.quickstart.task9.Matrix.printMatrix;
-import static yandex.coderun.quickstart.task9.Matrix.printMatrixLite;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Arrays;
 
 public class MatrixOperations {
-    public static void main(String[] args) {
-        int[][] matrix = new int[5][];
-        matrix[0] = new int[]{1, 2, 3, 4, 5};
-        matrix[1] = new int[]{1, 2, 3, 4, 5};
-        matrix[2] = new int[]{7, 5, 5, 4, 3};
-        matrix[3] = new int[]{1, 2, 3, 4, 5};
-        matrix[4] = new int[]{1, 2, 3, 4, 5};
-        int[][] m2 = new int[2][];
-        m2[0] = new int[]{1, 2};
-        m2[1] = new int[]{1, 2};
-        int[][] m3 = new int[5][];
-        m3[0] = new int[]{1, 2, 7, 8, 9};
-        m3[1] = new int[]{0, 2, 3, 7, 8};
-        m3[2] = new int[]{0, 0, 4, 6, 7};
-        m3[3] = new int[]{0, 0, 0, 5, 6};
-        m3[4] = new int[]{0, 0, 0, 0, 5};
-        int[][] m4 = new int[1][];
-        m4[0] = new int[]{1, 2, 3, 4, 5};
-        int[][] m5 = {{1}, {2}, {3}};
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        printMatrix(matrix);
-        System.out.println("\n-------------------");
-        printMatrixLite(transposedMatrix(matrix));
-        System.out.println("\n-------------------");
-        printMatrix(m2);
-        System.out.println("\n-------------------");
-        printMatrixLite(transposedMatrix(m2));
-        System.out.println("\n-------------------");
-        printMatrix(m3);
-        System.out.println("\n-------------------");
-        printMatrixLite(m3);
-        System.out.println("\n-------------------");
-        printMatrixLite(transposedMatrix(m3));
-        System.out.println("\n-------------------");
-        printMatrix(m4);
-        System.out.println("\n-------------------");
-        printMatrixLite(transposedMatrix(m4));
-        System.out.println("\n-------------------");
-        printMatrix(m5);
-        System.out.println("\n-------------------");
-        printMatrixLite(transposedMatrix(m5));
+        String[] nums = reader.readLine().split(" ");
+        int n = Integer.parseInt(nums[0]);
+        int m = Integer.parseInt(nums[1]);
+        int k = Integer.parseInt(nums[2]);
+
+        int[][] A = new int[n][m];
+        int[][] B = new int[m][k];
+
+        for (int i = 0; i < n; i++) {
+            A[i] = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        }
+
+        for (int i = 0; i < m; i++) {
+            B[i] = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        }
+
+        printMatrixLite(A);
+        printMatrixLite(B);
+        printMatrixLite(multiplicationMatrix(A, B));
+
+        reader.close();
+        writer.close();
     }
 
-    static int[][] transposedMatrix(int[][] matrix) {
-        int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                transposedMatrix[j][i] = matrix[i][j];
+    public static void printMatrixLite(int[][] A) {
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[i].length; j++) {
+                System.out.print(A[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static int[][] multiplicationMatrix(int[][] A, int[][] B) {
+        int n = A.length;
+        int m = B.length;
+        int k = B[0].length;
+        int[][] C = new int[n][k];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < k; j++) {
+                for (int a = 0; a < m; a++) {
+                    C[i][j] += A[i][a] * B[a][j];
+                }
             }
         }
-        return transposedMatrix;
+        return C;
     }
 }
