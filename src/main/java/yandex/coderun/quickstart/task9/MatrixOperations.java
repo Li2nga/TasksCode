@@ -32,7 +32,7 @@ public class MatrixOperations {
             B[i] = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         }
 
-        writer.write(printMatrixLite(transposedMatrix(multiplicationMatrix(A, B))));
+        writer.write(printMatrixLite(transposeMatrix(multiplyMatrices(A, B))));
 
         reader.close();
         writer.close();
@@ -49,7 +49,7 @@ public class MatrixOperations {
         return sb.toString();
     }
 
-    public static int[][] multiplicationMatrix(int[][] A, int[][] B) {
+    public static int[][] multiplyMatrices(int[][] A, int[][] B) {
         int n = A.length;
         int m = B.length;
         int k = B[0].length;
@@ -64,13 +64,13 @@ public class MatrixOperations {
         return C;
     }
 
-    static int[][] transposedMatrix(int[][] C) {
-        int[][] transposedMatrix = new int[C[0].length][C.length];
+    static int[][] transposeMatrix(int[][] C) {
+        int[][] transposeMatrix = new int[C[0].length][C.length];
         for (int i = 0; i < C.length; i++) {
             for (int j = 0; j < C[i].length; j++) {
-                transposedMatrix[j][i] = C[i][j];
+                transposeMatrix[j][i] = C[i][j];
             }
         }
-        return transposedMatrix;
+        return transposeMatrix;
     }
 }
