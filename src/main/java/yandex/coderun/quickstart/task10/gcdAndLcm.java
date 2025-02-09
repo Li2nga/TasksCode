@@ -33,29 +33,15 @@ public class gcdAndLcm {
             b2 = a2 % b2;
             a2 = temp;
         }
-
         return a2;
     }
 
     public static long lcm(int a, int b) {
-        long lcm = (long) a / gcd(a, b) * b;
-
-        return lcm;
+        return (long) a / gcd(a, b) * b;
     }
 }
 
 /*
 НОК - lcm
 НОД - gcd
-
-int r0 = a % b;
-        int k0 = a / b ;
-        a = k0 * b + r0;
-        int r1 = b % r0;
-        int k1 = b / r0;
-        b =  k1*r0 + r1;
-        int r2 = r0 % r1;
-        int k2 = r0 / r1;
-        r0 = k2 * r1 + r2;
-        return r0;
  */
