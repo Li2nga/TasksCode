@@ -32,8 +32,9 @@ public class NearestNumber {
         int out = nums[0];
         int d = Math.abs(x - out);
         for (int i = 1; i < nums.length; i++) {
-            if (Math.abs(x - nums[i]) < d) {
-                d = Math.abs(x - nums[i]);
+            int currD = Math.abs(x - nums[i]);
+            if (currD < d) {
+                d = currD;
                 out = nums[i];
             }
         }
