@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
+/**
+ * <a href="https://coderun.yandex.ru/selections/quickstart/problems/largest-product-three-numbers">task link</a><br>
+ */
 public class LargestProductThreeNumbers {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
