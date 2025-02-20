@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 /**
  * <a href="https://coderun.yandex.ru/selections/quickstart/problems/largest-product-three-numbers">task link</a><br>
+ * test - OK
  */
 public class LargestProductThreeNumbers {
     public static void main(String[] args) throws IOException {
@@ -17,13 +18,36 @@ public class LargestProductThreeNumbers {
 
         int[] nums = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
-        writer.write(threeLargestNumbers(nums));
+        //writer.write(threeLargestNumbers(nums));
+        System.out.println(threeLargestNumbers(nums));
 
         reader.close();
         writer.close();
     }
 
     static String threeLargestNumbers(int[] nums) {
+        if (nums.length <= 5) {
+            return bruteThreeLargestNumbers(nums);
+        }
+        int min0 = Integer.MAX_VALUE, min1 = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            if (min1 > nums[i]) {
+                if (min0 > nums[i]) {
+                    min1 = min0;
+                    min0 = nums[i];
+                } else {
+                    min1 = nums[i];
+                }
+            }
+        }
+        return min0 + " " + min1;
+
+//        int[] numsFive = new int[]
+        //               {nums[0], nums[1], nums[nums.length - 1], nums[nums.length - 2], nums[nums.length - 3]};
+        //       return bruteThreeLargestNumbers(numsFive);
+    }
+
+    static String bruteThreeLargestNumbers(int[] nums) {
         long maxMult = Long.MIN_VALUE;
         int ans1 = 0, ans2 = 0, ans3 = 0;
         for (int i = 0; i < nums.length - 2; i++) {
@@ -42,5 +66,15 @@ public class LargestProductThreeNumbers {
             }
         }
         return ans1 + " " + ans2 + " " + ans3;
+    }
+
+    static String threeLargestNumbersWithSort(int[] nums) {
+        if (nums.length <= 5) {
+            return bruteThreeLargestNumbers(nums);
+        }
+        Arrays.sort(nums);
+        int[] numsFive = new int[]
+                {nums[0], nums[1], nums[nums.length - 1], nums[nums.length - 2], nums[nums.length - 3]};
+        return bruteThreeLargestNumbers(numsFive);
     }
 }
