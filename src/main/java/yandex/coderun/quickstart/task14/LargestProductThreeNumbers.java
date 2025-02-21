@@ -18,8 +18,7 @@ public class LargestProductThreeNumbers {
 
         int[] nums = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
-        //writer.write(threeLargestNumbers(nums));
-        System.out.println(threeLargestNumbers(nums));
+        writer.write(threeLargestNumbers(nums));
 
         reader.close();
         writer.close();
@@ -30,6 +29,7 @@ public class LargestProductThreeNumbers {
             return bruteThreeLargestNumbers(nums);
         }
         int min0 = Integer.MAX_VALUE, min1 = Integer.MAX_VALUE;
+        int max1 = Integer.MIN_VALUE, max2 = Integer.MIN_VALUE, max3 = Integer.MIN_VALUE;
         for (int i = 0; i < nums.length; i++) {
             if (min1 > nums[i]) {
                 if (min0 > nums[i]) {
@@ -39,12 +39,23 @@ public class LargestProductThreeNumbers {
                     min1 = nums[i];
                 }
             }
+            if (max3 < nums[i]) {
+                if (max2 < nums[i]) {
+                    if (max1 < nums[i]) {
+                        max3 = max2;
+                        max2 = max1;
+                        max1 = nums[i];
+                    } else {
+                        max3 = max2;
+                        max2 = nums[i];
+                    }
+                } else {
+                    max3 = nums[i];
+                }
+            }
         }
-        return min0 + " " + min1;
-
-//        int[] numsFive = new int[]
-        //               {nums[0], nums[1], nums[nums.length - 1], nums[nums.length - 2], nums[nums.length - 3]};
-        //       return bruteThreeLargestNumbers(numsFive);
+        int[] numsFive = new int[]{min0, min1, max3, max2, max1};
+        return bruteThreeLargestNumbers(numsFive);
     }
 
     static String bruteThreeLargestNumbers(int[] nums) {
