@@ -59,7 +59,7 @@ public class LargestProductThreeNumbers {
     }
 
     /**
-     * В соло выдает ошибку TL на 37 тесте
+     * When used throughout the entire sequence, it produces a TL error on test 37
      */
     static String bruteThreeLargestNumbers(int[] nums) {
         long maxMult = Long.MIN_VALUE;
@@ -82,6 +82,9 @@ public class LargestProductThreeNumbers {
         return ans1 + " " + ans2 + " " + ans3;
     }
 
+    /**
+     * Passes the tests, but gives results slower
+     */
     static String threeLargestNumbersWithSort(int[] nums) {
         if (nums.length <= 5) {
             return bruteThreeLargestNumbers(nums);
