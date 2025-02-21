@@ -58,6 +58,9 @@ public class LargestProductThreeNumbers {
         return bruteThreeLargestNumbers(numsFive);
     }
 
+    /**
+     * В соло выдает ошибку TL на 37 тесте
+     */
     static String bruteThreeLargestNumbers(int[] nums) {
         long maxMult = Long.MIN_VALUE;
         int ans1 = 0, ans2 = 0, ans3 = 0;
