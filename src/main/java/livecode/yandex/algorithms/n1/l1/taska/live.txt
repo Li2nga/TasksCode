@@ -1,0 +1,84 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String [] nums = reader.readline(split " ");
+        int tRoom = Integer.Parsint (nums[0]);
+        int tCound = Integer.Parsint (nums[1]);
+        String t = reader.readline;
+
+        write.writer(StringOf(condicioner));
+        reader.close();
+        writer.close();
+    }
+
+    public int condicioner( tRoom, tCound, t) {
+        int r  = 0;
+        if (r.equals("freeze")||r.equals("auto") && tRoom > tCound)
+        {r = tCound
+                    }
+        else if (r.equals("heat")||r.equals("auto") && tRoom < tCound)
+        {r = tCound
+        } else {
+         r = tRoom
+        }
+        return r;
+    }
+}
+
+
+1. 12 строка пробел перед [] не нужен
+2. 12 строка line с большой буквы
+3. 12 строка после readLine() круглые скобки
+4. 12 строка перед split точка, " " отдельно в скобках
+5. 13 ст parsInt с маленькой буквы, после 's' написать 'e' а Int с большой, перед скобками метода убрать пробел
+-. 14 ст аналогично 13 ст
+6. 15 ст Line с большой буквы , после reader.readLine пустые скобки
+7. 17 строка String.valueOf(), write и writer поменять местами
+8. 17 строка в скобка метода condicioner() отсутствуют входные данные
+9. 22 строка у метода condicioner( int tRoom, int tCond, String t) не указан тип входных данных
+10. 24 строка не выделяется пробелами ||
+-.  27 строка аналогично 24 ст
+11. 22 строка изменить название метода на более подходящее
+12. с 24 строки по 31 правильно разместить фигурные скобки
+13. исправить tCound на tCond
+14. с 25 по 30 проставить в нужных местах ";"
+15. 22 строка public заменить на static
+16. строка 15 изменить название переменной
+
+
+public class Conditioner {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String[] nums = reader.readLine().split(" ");
+        int tRoom = Integer.parsInt(nums[0]);
+        int tCond = Integer.parsInt(nums[1]);
+        String mode = reader.readLine();
+
+        write.writer(String.valueOf(calcTemp(tRoom, tCond, mode)));
+
+        reader.close();
+        writer.close();
+    }
+
+    static int calcTemp(int tRoom, int tCond, String mode) {
+        int r  = 0;
+        if ((mode.equals("freeze") || mode.equals("auto")) && tRoom > tCond) {
+            r = tCond;
+        } else if ((mode.equals("heat") || mode.equals("auto")) && tRoom < tCond) {
+            r = tCond;
+        } else {
+            r = tRoom;
+        }
+        return r;
+    }
+}
