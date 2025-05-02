@@ -30,9 +30,9 @@ public class PhoneNumbers {
 
     static long convNum(long raw) {
         if (raw < 1_000_00_00) {
-            raw += 84950000000L;
-        } else if (raw < 8000_000_00_00L) {
-            raw += 1000_000_00_00L;
+            raw += 8_495_000_00_00L;
+        } else if (raw < 8_000_000_00_00L) {
+            raw += 1_000_000_00_00L;
         }
         return raw;
     }
